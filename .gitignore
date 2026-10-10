@@ -1,0 +1,18 @@
+# `lib/` is deliberately NOT ignored: it is this package's runtime entry
+# (`main` / `exports` point at `lib/index.js`), and a `github:` install copies
+# the repository as-is without running a build. Committing it is what makes
+# `dsh plugin add github:<user>/<repo>` work out of the box.
+
+# Dependencies: the dsh profile links this package, so nothing is installed here.
+node_modules/
+
+# Repository-local scratch and caches.
+.pnpm-store/
+.test-home/
+
+# Logs and editor/OS noise.
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

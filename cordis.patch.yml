@@ -1,0 +1,5 @@
+# dsh bundle patch: inserts this plugin into a profile's layer stack.
+
+- insert:
+    - id: commandcode-plans-provider
+      name: '@local/commandcode-plans-provider'

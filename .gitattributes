@@ -1,0 +1,4 @@
+# Normalize line endings in the repository. The plugin runs on Windows, macOS
+# and Linux, and its build output is committed, so the working-tree style is
+# left to each platform's own `core.autocrlf` rather than forced here.
+* text=auto
