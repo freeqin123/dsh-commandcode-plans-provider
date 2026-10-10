@@ -1,6 +1,6 @@
 {
   "name": "dsh-commandcode-plans-provider",
-  "version": "2.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Command Code subscription (Go/GOAT/Pro/Max) provider for dsh: plan-scanned model catalog over /alpha/generate, visual API key setup, and subscription usage limits in the Web UI.",
   "repository": {
