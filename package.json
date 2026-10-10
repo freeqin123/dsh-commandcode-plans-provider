@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "description": "Command Code subscription (Go/GOAT/Pro/Max) provider for dsh: plan-scanned model catalog over /alpha/generate, visual API key setup, and subscription usage limits in the Web UI.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeqin123/dsh-commandcode-plans-provider.git"
+  },
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,6 +26,8 @@
     "client",
     "cordis.patch.yml",
     "README.md",
+    "README.en.md",
+    "THIRD-PARTY-NOTICES.md",
     "LICENSE"
   ],
   "scripts": {
