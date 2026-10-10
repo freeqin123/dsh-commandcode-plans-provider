@@ -25,7 +25,9 @@
  * the user needs.
  */
 window.__ModuleLoader__.load({
-  id: '@local/commandcode-plans-provider',
+  // Must equal the package name: `dsh-client-modules` resolves the client half
+  // by this id, and a mismatch means the browser half never loads.
+  id: 'dsh-commandcode-plans-provider',
   factory: (require) => {
     const React = require('react')
     const h = React.createElement
@@ -42,7 +44,7 @@ window.__ModuleLoader__.load({
     const CELL_ID = 'commandcode-usage'
 
     /** Package name: also the module-loader id and this slot's key. */
-    const PKG = '@local/commandcode-plans-provider'
+    const PKG = 'dsh-commandcode-plans-provider'
 
     /** The Remote namespace this plugin's Host half registers. */
     const NS = 'commandcodeUsage'

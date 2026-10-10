@@ -23,7 +23,7 @@
  */
 import type { Context } from '@deepseek-ai/cordis';
 /** Package name this contribution is attributed to. */
-export declare const TYPERT_PACKAGE = "@local/commandcode-plans-provider";
+export declare const TYPERT_PACKAGE = "dsh-commandcode-plans-provider";
 /** Cordis service key that owns the exported method; also the wire namespace. */
 export declare const TYPERT_SERVICE = "commandcodeUsage";
 /**

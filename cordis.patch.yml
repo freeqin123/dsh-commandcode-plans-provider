@@ -2,4 +2,4 @@
 
 - insert:
     - id: commandcode-plans-provider
-      name: '@local/commandcode-plans-provider'
+      name: 'dsh-commandcode-plans-provider'

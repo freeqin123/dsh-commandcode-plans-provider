@@ -18,6 +18,13 @@ import { dirname, join } from 'node:path'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const source = readFileSync(join(root, 'client', 'index.js'), 'utf8')
 
+/**
+ * The package name is the single source of truth for the loader id: dsh resolves
+ * the client half by it, so a rename that misses `client/index.js` must fail
+ * here rather than in the browser.
+ */
+const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
+
 /** Captures the module specifier the shell hands the loader. */
 let spec
 const windowStub = {
@@ -38,8 +45,10 @@ const documentStub = {
 new Function('window', 'document', source)(windowStub, documentStub)
 
 if (spec === undefined) throw new Error('the bundle never called window.__ModuleLoader__.load')
-if (spec.id !== '@local/commandcode-plans-provider') {
-  throw new Error(`the loader id must equal the package name, got ${JSON.stringify(spec.id)}`)
+if (spec.id !== pkg.name) {
+  throw new Error(
+    `the loader id must equal the package name: id=${JSON.stringify(spec.id)}, name=${JSON.stringify(pkg.name)}`,
+  )
 }
 
 const ReactStub = {
@@ -89,7 +98,7 @@ if (missing.length > 0) throw new Error(`slots not registered: ${missing.join(',
 
 if (mounts.length !== 1) throw new Error(`expected exactly one $mount, got ${mounts.length}`)
 const mount = mounts[0]
-if (mount.package !== spec.id) throw new Error('the mounted contribution must name this package')
+if (mount.package !== pkg.name) throw new Error('the mounted contribution must name this package')
 if (mount.descriptors.length !== 1) throw new Error('exactly one descriptor is expected')
 if (mount.descriptors[0].namespace !== 'commandcodeUsage') {
   throw new Error(`unexpected namespace ${JSON.stringify(mount.descriptors[0].namespace)}`)
